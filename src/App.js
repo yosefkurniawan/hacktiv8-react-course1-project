@@ -1,14 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
+import Header from './components/page/header.js';
+import Content from './components/page/content.js';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-          PODSPACE
-      </header>
+    <div className="app">
+      <Header />
+      <Content />
     </div>
   );
 }
