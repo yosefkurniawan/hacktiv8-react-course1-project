@@ -6,8 +6,13 @@ function List() {
     return (
         <div className="podcast-list">
             <SearchForm />
-            Podcast List goes here....
-            <Item />
+            
+            <ul>
+                <Item />
+                <Item />
+                <Item />
+                <Item />
+            </ul>
         </div>
     )
 }

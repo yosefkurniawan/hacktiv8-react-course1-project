@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../logo.svg';
+import logo from '../../media/podspace-logo.png';
 
 function Header() {
     return (

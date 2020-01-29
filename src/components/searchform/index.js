@@ -3,7 +3,10 @@ import React from "react";
 function SearchForm(params) {
     return (
         <div className="searchform">
-            Search Form goes here...
+            <form>
+                <input type="text" placeholder="Cari Podcast..." />
+                <button type="submit">Search</button>
+            </form>
         </div>
     )
 }
