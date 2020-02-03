@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Item(props) {
     const seeMoreButtonTitle = 'Lihat >>';
@@ -13,7 +14,7 @@ function Item(props) {
                     <div className="podcast-info-wrapper">
                         <h3 className="podcast-title">{podcast.title}</h3>
                         <p className="podcast-desc"><a href={podcast.url}>{podcast.url}</a></p>
-                        <a href="# " className="button">{seeMoreButtonTitle}</a>
+                        <Link to={`/podcastview/${podcast.id}`} className="button">{seeMoreButtonTitle}</Link>
                     </div>
                 </li>
         </>

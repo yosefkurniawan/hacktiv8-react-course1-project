@@ -1,7 +1,10 @@
 import React from "react";
+import { 
+    useParams,
+    Link
+} from "react-router-dom";
 import ContextPodcasts from '../../data/contextPodcasts.js';
 import Episodes from '../../components/podcast/episodes.js';
-import { useParams } from "react-router-dom";
 
 function View() {
     const backButtonText = '<< Kembali';
@@ -35,7 +38,7 @@ function View() {
                     <>
                         <div className="podcast-image-wrapper">
                             <img src={getThumbnail(context.getPodcastById(podcastid))} alt={getTitle(context.getPodcastById(podcastid))} style={{'width': '100%'}}/>
-                            <a href="# " className="button" style={{'marginTop':'20px'}}>{backButtonText}</a>
+                            <Link to="/" className="button" style={{'marginTop':'20px'}}>{backButtonText}</Link>
                         </div>
                         <div className="podcast-info-wrapper">
                             <h3 className="podcast-title">{getTitle(context.getPodcastById(podcastid))}</h3>
