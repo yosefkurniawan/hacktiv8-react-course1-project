@@ -6,10 +6,10 @@ function Episodes(props) {
             <h4>
                 <strong>Episode: </strong>
             </h4>
-            {(props.podcast && props.podcast.episodes) ? (
+            {(props.episodes) ? (
                 <>
                     <div>
-                        {props.podcast.episodes.map(episode => (
+                        {props.episodes.map(episode => (
                             <audio controls key={episode.id}>
                                 <source src={episode.audio} type="audio/mpeg" />
                             </audio>

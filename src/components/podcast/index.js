@@ -1,6 +1,7 @@
 import React from "react";
 import List from "./list.js";
 import View from "./view.js";
+import ContextPodcasts from '../../data/contextPodcasts.js';
 import { 
     BrowserRouter as Router,
     Route,
@@ -10,16 +11,20 @@ import {
 function Podcast() {
     return (
         <div className="page-podcast">
-            <Router>
-                <Switch>
-                    <Route path="/podcastview/:podcastid">
-                        <View />
-                    </Route>
-                    <Route path="/">
-                        <List />
-                    </Route>
-                </Switch>
-            </Router>
+            <ContextPodcasts.Consumer>
+                {(context) => (
+                    <Router>
+                        <Switch>
+                            <Route path="/podcastview/:podcastid">
+                                <View podcasts={context.state.podcasts} />
+                            </Route>
+                            <Route path="/">
+                                <List podcasts={context.state.podcasts} />
+                            </Route>
+                        </Switch>
+                    </Router>
+                )}
+            </ContextPodcasts.Consumer>
         </div>
     )
 }
