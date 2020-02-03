@@ -6,7 +6,8 @@ class DataProvider extends React.Component {
         super(props);
 
         this.state = {
-            podcasts: []
+            podcasts: [],
+            loading: true
         }
     }
 
@@ -16,24 +17,33 @@ class DataProvider extends React.Component {
                 return results.json();
             }).then(data => {
                 this.setState({
-                    podcasts: data
+                    podcasts: data,
+                    loading: false
                 })
             });
     }
 
     getPodcastById = (id) => {
-        const podcast = this.state.podcasts.find(x => x.id === id)
+        const podcast = this.state.podcasts.find(x => x.id === parseInt(id));
         return podcast;
     }
 
     render() {
         return (
-            <ContextPodcasts.Provider value={{
-                state: this.state,
-                getPodcastById: this.getPodcastById
-            }}>
-                {this.props.children}
-            </ContextPodcasts.Provider>
+            <>
+            { this.state.loading ? 
+                (
+                    <div className="spinner app-loader">Loading apps...</div>
+                ) : (
+                    <ContextPodcasts.Provider value={{
+                        state: this.state,
+                        getPodcastById: this.getPodcastById
+                    }}>
+                        {this.props.children}
+                    </ContextPodcasts.Provider>
+                )
+            }
+            </>
         )
     }
 }
