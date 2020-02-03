@@ -1,25 +1,26 @@
 import React from "react";
 
 function Episodes(props) {
-    if (props.podcast && props.podcast.episodes) {
-        return (
-            <div className="episodes">
-                <h4>
-                    <strong>Episodes: </strong>
-                </h4>
-                <div>
-
-                    {props.podcast.episodes.map(episode => (
-                        <audio controls key={episode.id}>
-                            <source src={episode.audio} type="audio/mpeg" />
-                        </audio>
-                    ))}
-                </div>
-            </div>
-        )
-    } else {
-        return null;
-    }
+    return (
+        <div className="episodes">
+            <h4>
+                <strong>Episode: </strong>
+            </h4>
+            {(props.podcast && props.podcast.episodes) ? (
+                <>
+                    <div>
+                        {props.podcast.episodes.map(episode => (
+                            <audio controls key={episode.id}>
+                                <source src={episode.audio} type="audio/mpeg" />
+                            </audio>
+                        ))}
+                    </div>
+                </>
+            ) : (
+                <span>Coming Soon...</span>
+            )}
+        </div>
+    )
 }
 
 export default Episodes;
