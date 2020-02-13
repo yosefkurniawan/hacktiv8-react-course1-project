@@ -1,9 +1,9 @@
-import React from "react";
+import React, {lazy, Suspense} from "react";
 import { 
     useParams,
     Link
 } from "react-router-dom";
-import Episodes from '../../components/podcast/episodes.js';
+const Episodes = lazy(() => import('../../components/podcast/episodes.js'));
 
 function View(props) {
     const backButtonText = '<< Kembali';
@@ -24,7 +24,9 @@ function View(props) {
             <div className="podcast-info-wrapper">
                 <h3 className="podcast-title">{podcast.title}</h3>
                 <p className="podcast-desc"><a href={podcast.url}>{podcast.url}</a></p>
-                <Episodes episodes={podcast.episodes} />
+                <Suspense>
+                    <Episodes episodes={podcast.episodes} />
+                </Suspense>
             </div>
         </div>
     )

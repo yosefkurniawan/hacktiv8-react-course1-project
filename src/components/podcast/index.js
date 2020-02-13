@@ -1,12 +1,13 @@
-import React from "react";
-import List from "./list.js";
-import View from "./view.js";
+import React, {lazy, Suspense} from "react";
 import ContextPodcasts from '../../data/contextPodcasts.js';
 import { 
     BrowserRouter as Router,
     Route,
     Switch
 } from "react-router-dom";
+
+const List = lazy(() => import('./list.js'));
+const View = lazy(() => import('./view.js'));
 
 function Podcast() {
     return (
@@ -16,10 +17,14 @@ function Podcast() {
                     <Router>
                         <Switch>
                             <Route path="/podcastview/:podcastid">
-                                <View podcasts={context.state.podcasts} />
+                                <Suspense>
+                                    <View podcasts={context.state.podcasts} />
+                                </Suspense>
                             </Route>
                             <Route path="/">
-                                <List podcasts={context.state.podcasts} />
+                                <Suspense>
+                                    <List podcasts={context.state.podcasts} />
+                                </Suspense>
                             </Route>
                         </Switch>
                     </Router>

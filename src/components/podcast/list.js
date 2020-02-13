@@ -1,8 +1,9 @@
-import React from "react";
-import SearchForm from "../searchform";
-import Item from "./item.js";
+import React, {lazy, Suspense} from "react";
 /** @jsx jsx  */
 import {jsx, css} from '@emotion/core';
+
+const SearchForm = lazy(() => import('../searchform'))
+const Item = lazy(() => import('./item.js'))
 
 class List extends React.Component {
     constructor(props) {
@@ -31,11 +32,17 @@ class List extends React.Component {
                 return;
             }
 
-            result.push(<Item podcast={podcast} key={podcast.id} />);
+            result.push(
+                <Suspense>
+                    <Item podcast={podcast} key={podcast.id} />
+                </Suspense>
+            );
         })
         return (
             <div className="podcast-list">
-                <SearchForm keyword={this.state.keyword} onSearch={this.onSearch} onKeywordChange={this.onKeywordChange} />
+                <Suspense>
+                    <SearchForm keyword={this.state.keyword} onSearch={this.onSearch} onKeywordChange={this.onKeywordChange} />
+                </Suspense>
                 
                 <ul>
                     {result.length ? result : <span className="no-result" css={styles.empty}>Pencarian tidak ditemukan....</span>}
