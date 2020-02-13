@@ -164,6 +164,11 @@ a.button:hover {
   display: flex;
 }
 
+ul.episodes {
+  padding: 0;
+  list-style: none;
+}
+
 @media screen and (max-width: 480px) {
   .podcast-list .podcast-list-item,
   .podcast-view {
