@@ -1,6 +1,8 @@
 import React from "react";
 import SearchForm from "../searchform";
 import Item from "./item.js";
+/** @jsx jsx  */
+import {jsx, css} from '@emotion/core';
 
 class List extends React.Component {
     constructor(props) {
@@ -36,11 +38,18 @@ class List extends React.Component {
                 <SearchForm keyword={this.state.keyword} onSearch={this.onSearch} onKeywordChange={this.onKeywordChange} />
                 
                 <ul>
-                    {result}
+                    {result.length ? result : <span className="no-result" css={styles.empty}>Pencarian tidak ditemukan....</span>}
                 </ul>
             </div>
         )
     }
 }
 
+const styles = {
+    empty: css`
+        display: block;
+        font-style: italic;
+        margin: 30px 0;
+    `
+}
 export default List;

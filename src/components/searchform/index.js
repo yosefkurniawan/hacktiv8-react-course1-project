@@ -10,7 +10,6 @@ class SearchForm extends React.Component {
     }
 
     hanleKeywordChange = (e) => {
-        console.log(e.target.value);
         this.props.onKeywordChange(e.target.value);
     }
 
