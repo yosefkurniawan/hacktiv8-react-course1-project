@@ -33,8 +33,8 @@ class List extends React.Component {
             }
 
             result.push(
-                <Suspense>
-                    <Item podcast={podcast} key={podcast.id} />
+                <Suspense key={podcast.id} >
+                    <Item podcast={podcast}/>
                 </Suspense>
             );
         })
