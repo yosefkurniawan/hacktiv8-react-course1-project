@@ -3,7 +3,7 @@ import logo from '../../media/podspace-logo.png';
 
 function Header() {
     return (
-        <header className="header">
+        <header className="header" data-testid="header">
             <img src={logo} className="logo" alt="logo" />
         </header>
     );

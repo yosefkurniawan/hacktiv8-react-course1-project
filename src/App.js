@@ -8,7 +8,7 @@ const Content = lazy(() => import('./components/page/content.js'));
 class App extends React.Component {
   render() {
     return (
-      <div className="app">
+      <div className="app" data-testid="app">
         <DataProvider>
           <div className="header-wrapper">
             <Suspense fallback={<div className="spinner">Loading Header</div>}>
